@@ -10,13 +10,9 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Calendar.associate = function(models) {
-        Calendar.belongsTo(models.User, {
-            onDelete: "cascade"
-        });
+        Calendar.belongsTo(models.User);
         
-        Calendar.hasMany(models.CalendarEvent, {
-            onDelete: "cascade"
-        });
+        Calendar.hasMany(models.CalendarEvent);
     };
 
     return Calendar;

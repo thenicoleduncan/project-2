@@ -5,16 +5,13 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true
         },
         description: DataTypes.TEXT,
+        completed: DataTypes.BOOLEAN,
         user_id: DataTypes.INTEGER
     });
 
     Goal.associate = function(models) {
-        Goal.belongsTo(models.User, { // insert userId into Goal table
-            onDelete: "cascade"
-        });
-        Goal.hasMany(models.Milestone, { // place goalId into Milestone table
-            onDelete: "cascade"
-        });
+        Goal.belongsTo(models.User);
+        Goal.hasMany(models.Milestone);
     };
 
 

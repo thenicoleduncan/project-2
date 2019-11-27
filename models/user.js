@@ -8,13 +8,9 @@ module.exports = function(sequelize, DataTypes) {
         email: DataTypes.STRING
     });
 
-    User.hasMany(models.Goal, { //will add userId to Goals
-        onDelete: "cascade"
-    });
+    User.hasMany(models.Goal); //will add userId to Goals
     
-    User.belongsTo(models.Calendar, { //will create calendarId in User table
-        onDelete: "cascade"
-    });
+    User.belongsTo(models.Calendar); //will create calendarId in User table
     
     return User;
 };

@@ -10,9 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     CalendarEvent.associate = function(models) {
-        CalendarEvent.belongsTo(models.Calendar, {
-            onDelete: "cascade"
-        });
+        CalendarEvent.belongsTo(models.Calendar);
         
     };
 

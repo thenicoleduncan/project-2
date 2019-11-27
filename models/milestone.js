@@ -5,18 +5,14 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true
         },
         description: DataTypes.TEXT,
-        user_id: DataTypes.INTEGER
+        completed: DataTypes.BOOLEAN
     });
 
     Milestone.associate = function(models) {
         // Associating Author with Posts
         // When an Author is deleted, also delete any associated Posts
-        Milestone.hasMany(models.Task, {
-            onDelete: "cascade"
-        });
-        Milestone.belongsTo(models.Goal, { //milestone has 1 goal id
-            onDelete: "cascade"
-        });
+        Milestone.hasMany(models.Task);
+        Milestone.belongsTo(models.Goal);
     };
 
 

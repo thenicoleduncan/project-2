@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true
         }, 
         description: DataTypes.TEXT,
+        completed: DataTypes.BOOLEAN,
         start_date: DataTypes.DATE,
         due_date: DataTypes.DATE
     });
@@ -12,9 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     Task.associate = function(models) {
         // this will make it so that an extra parameter, MilestoneId will be 
         //added as a foreign key 
-        Task.belongsTo(models.Milestone, {
-            onDelete: "cascade"
-        });
+        Task.belongsTo(models.Milestone);
     };
 
     return Task;
