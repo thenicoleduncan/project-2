@@ -1,40 +1,27 @@
-{{!-- header put here --}}
+{{!-- Andrew: header put here --}}
 
-{{!-- description/bio put here --}}
+{{!-- Nicole: description/bio put here --}}
 
-{{!-- authentication form and button put here --}}
+<div>
+    <h2>Welcome to Accountabilibuddy. A safe place to store your hopes and dreams.</h2>
+</div>
 
-{{!-- footer put here --}}
+{{!-- Nicole: authentication form and button put here --}}
 
+<div>
+    <h2>Sign in to your account.</h2>
 
-{{!-- example code to look at below --}}
-<h1>Cats!</h1>
-<h2>Cats that are not sleepy!</h2>
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-<h2>Cats that are sleepy!</h2>
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-<h2>Add a Cat</h2>
-<form class="create-form">
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
-  </div>
-  <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-  <button type="submit">Add Cat</button>
-</form>
+    <form action="/action_page.php">
+        Username:<br>
+        <input type="text" name="username" value="">
+        <br><br>
+        Password:<br>
+        <input type="text" name="password" value="">
+        <br><br>
+        <input type="submit" value="Sign In">
+    </form>
+
+    <p>If you don't have an account <a href="url">sign up</a>.</p>
+</div>
+
+{{!-- Andrew: footer put here --}}
