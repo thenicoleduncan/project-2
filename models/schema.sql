@@ -1,5 +1,3 @@
-DROP DATABASE IF EXISTS exampledb;
-CREATE DATABASE exampledb;
-
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
+DROP DATABASE IF EXISTS accountabilibuddy_db;
+CREATE DATABASE accountabilibuddy_db; 
+USE accountabilibuddy_db; 
