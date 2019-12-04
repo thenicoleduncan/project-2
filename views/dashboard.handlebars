@@ -1,27 +1,45 @@
 {{!-- dashboard page showing us goals, progress, and priority tasks--}}
 
-{{!-- header --}}
+{{!-- Nicole: header --}}
+<div class="header">
+  <a href="#">
+    <img id="logo" src="#" alt="logo">
+  </a>
+  <h1>ACCOUNTABILIBUDDY</h1>
+</div>
+
 {{!-- priority tasks (top 5 due soon) --}}
-{{!-- add goal form --}}
+{{!-- Nicole: add goal form --}}
+<h2>Add a Goal</h2>
+<form class="create-form">
+  <div class="form-group">
+    <label for="ca">Goal:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+  <button type="submit">Add Goal!</button>
+</form>
 {{!-- current goals as loader bar --}}
-{{!-- *bonus* inspiring quote populated by API --}} 
-{{!-- footer --}}
+
+{{!-- Nicole: footer --}}
+<div class="footer">
+  <p>&copy</p>
+</div>
 
 <h1>Cats!</h1>
 <h2>Cats that are not sleepy!</h2>
 <ul>
   {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
+  {{#unless sleepy}}
+  {{> cats/cat-block sleep=true}}
+  {{/unless}}
   {{/each}}
 </ul>
 <h2>Cats that are sleepy!</h2>
 <ul>
   {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
+  {{#if sleepy}}
+  {{> cats/cat-block sleep=false}}
+  {{/if}}
   {{/each}}
 </ul>
 <h2>Add a Cat</h2>
