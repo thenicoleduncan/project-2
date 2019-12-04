@@ -1,11 +1,37 @@
-{{!-- dashboard page showing us goals, progress, and priority tasks--}}
+{{!-- dashboard page showing us goals, progress, and priority tasks--}
 
-{{!-- header --}}
+{{!-- Nicole: header --}}
+<div class="header">
+  <a href="#">
+    <img id="logo" src="#" alt="logo">
+  </a>
+  <h1>ACCOUNTABILIBUDDY</h1>
+</div>
+
 {{!-- priority tasks (top 5 due soon) me --}}
 <div id="ptasksData"></div>
-{{!-- add goal form --}}
+
+{{!-- Nicole: add goal form --}}
+<div class="add-goal">
+
+  <h2>Add a Goal</h2>
+  <form class="create-form">
+    <div class="form-group">
+      <label for="ca">Goal:</label>
+      <input type="text" id="ca" name="name">
+    </div>
+    <button type="submit">Add Goal!</button>
+  </form>
+
+</div>
+
 {{!-- current goals as loader bar me --}}
 <div id="myProgress">
   <div id="myBar">20%</div>
 </div>
-{{!-- footer --}}
+
+{{!-- Nicole: footer --}}
+<div class="footer">
+  <p>©Copyright 2019</p>
+</div>
+

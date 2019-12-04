@@ -1,9 +1,7 @@
 {{!-- Andrew: header put here --}}
 <div class="header">
     <a href="#">
-        <img id="logo"
-            src="#"
-            alt="logo">
+        <img id="logo" src="#" alt="logo">
     </a>
     <h1>ACCOUNTABILIBUDDY</h1>
 </div>
@@ -17,8 +15,8 @@
 
 <div>
     <h2>Sign in to your account.</h2>
-
-    <form action="/action_page.php">
+    {{!-- need to route to dashboard handlebars page --}}
+    <form action="/dashboard.handlebars">
         Username:<br>
         <input type="text" name="username" value="">
         <br><br>
@@ -33,5 +31,5 @@
 
 {{!-- Andrew: footer put here --}}
 <div class="footer">
-<p>&copy</p>
+    <p>©Copyright 2019</p>
 </div>

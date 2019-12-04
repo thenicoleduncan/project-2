@@ -1,38 +1,32 @@
 {{!-- tasks page showing tasks associated with the right goal --}}
 
-{{!-- header --}}
-{{!-- goal --}}
-{{!-- add tasks form --}}
-{{!-- tasks with due date --}}
-{{!-- footer --}}
+{{!-- Nicole: header --}}
+<div class="header">
+  <a href="#">
+    <img id="logo" src="#" alt="logo">
+  </a>
+  <h1>ACCOUNTABILIBUDDY</h1>
+</div>
 
-<h1>Cats!</h1>
-<h2>Cats that are not sleepy!</h2>
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-<h2>Cats that are sleepy!</h2>
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-<h2>Add a Cat</h2>
-<form class="create-form">
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
-  </div>
-  <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-  <button type="submit">Add Cat</button>
-</form>
+{{!-- specific goal --}}
+
+{{!-- Nicole: add tasks form --}}
+<div class="add-task">
+
+  <h2>Add a Task</h2>
+  <form class="create-form">
+    <div class="form-group">
+      <label for="ca">Task:</label>
+      <input type="text" id="ca" name="name">
+    </div>
+    <button type="submit">Add Task!</button>
+  </form>
+
+</div>
+
+{{!-- tasks with due date --}}
+
+{{!-- Nicole: footer --}}
+<div class="footer">
+  <p>©Copyright 2019</p>
+</div>
