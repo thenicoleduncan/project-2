@@ -9,7 +9,18 @@
 </div>
 
 {{!-- priority tasks (top 5 due soon) me --}}
-<div id="ptasksData"></div>
+
+<div id="priorityTasks">
+
+  <ul>
+    {{#each tasks}}
+    <li>
+      <p>Priority Task: {{task}}</p>
+    </li>
+    {{/each}}
+  </ul>
+
+</div>
 
 {{!-- Nicole: add goal form --}}
 <div class="add-goal">
@@ -24,11 +35,18 @@
 
 {{!-- current goals as loader bar me --}}
 <div id="myProgress">
-  <div id="myBar">20%</div>
+
+  <ul>
+    {{#each goals}}
+    <li>
+      <p id="myBar"><a href="#">Goal: {{goal}}</a></p>
+    </li>
+    {{/each}}
+  </ul>
+
 </div>
 
 {{!-- Nicole: footer --}}
 <div class="footer">
   <p>©Copyright 2019</p>
 </div>
-
