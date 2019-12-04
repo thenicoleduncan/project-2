@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    const Milestone = sequelize.define("milestone", {
+    const Milestone = sequelize.define("Milestone", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true

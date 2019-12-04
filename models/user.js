@@ -1,5 +1,6 @@
-module.exports = function(sequelize, DataTypes) {
-    const User = sequelize.define("user", {
+
+module.exports = function (sequelize, DataTypes) {
+    const User = sequelize.define("User", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true
@@ -8,9 +9,10 @@ module.exports = function(sequelize, DataTypes) {
         email: DataTypes.STRING
     });
 
-    User.hasMany(models.Goal); //will add userId to Goals
-    
-    User.belongsTo(models.Calendar); //will create calendarId in User table
-    
+    User.associate = function (models) {
+        User.hasMany(models.Goal); //will add userId to Goals
+
+        User.hasOne(models.Calendar); //will create calendarId in User table
+    }
     return User;
 };
