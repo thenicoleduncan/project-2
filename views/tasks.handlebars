@@ -1,5 +1,4 @@
 {{!-- tasks page showing tasks associated with the right goal --}}
-
 {{!-- Nicole: header --}}
 <div class="header">
   <a href="#">
@@ -7,24 +6,17 @@
   </a>
   <h1>ACCOUNTABILIBUDDY</h1>
 </div>
-
 {{!-- specific goal --}}
-
 {{!-- Nicole: add tasks form --}}
 <div class="add-task">
-
   <h2>Add a Task</h2>
   <form action="/" method="POST">
     <textarea type="text" name="task"></textarea>
     <button type="submit">Add Task!</button>
   </form>
-
 </div>
-
-
 {{!-- tasks with due date --}}
 <div id="specificTasks">
-
   <ul>
     {{#each tasks}}
     <li>
@@ -32,10 +24,9 @@
     </li>
     {{/each}}
   </ul>
-
 </div>
-
 {{!-- Nicole: footer --}}
 <div class="footer">
   <p>©Copyright 2019</p>
 </div>
+Collapse
