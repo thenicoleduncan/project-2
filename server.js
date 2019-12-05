@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Handlebars
+
 app.engine(
   "handlebars",
   exphbs({
@@ -26,6 +27,7 @@ require("./routes/api-routes-goals")(app);
 require("./routes/api-routes-milestones")(app);
 require("./routes/api-routes-tasks")(app); 
 require("./routes/api-routes-users") (app); 
+require("./routes/htmlRoutes")(app); 
 
 var syncOptions = { force: false };
 
