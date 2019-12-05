@@ -1,3 +1,13 @@
+* {
+  align-content: center;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
+
+.header {
+background-color: #add8e6;
+}
+
+
