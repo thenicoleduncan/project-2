@@ -4,7 +4,7 @@
     "password": "Happiness123", 
     "database": "accountabilibuddy_db",
     "host": "localhost",
-    "port": 3388,
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
