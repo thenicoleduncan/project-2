@@ -6,7 +6,10 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true
         },
         description: DataTypes.TEXT,
-        completed: DataTypes.BOOLEAN
+        completed: {
+            type: DataTypes.BOOLEAN, 
+            defaultValue: 0
+        },
     });
 
     Goal.associate = function(models) {
