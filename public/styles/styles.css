@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #282828;
+  background-color: black;
   align-content: center;
   text-align: center;
   color: aliceblue;
@@ -15,8 +15,17 @@ body {
 
 .sign-in {
   align-content: center;
-  border-style: solid;
-  border-color: #3500D3;
+  /* border-style: solid; */
+  /* border-color: #3500D3; */
   font-size: 18px;
+  background-color:#282828;
+  border-radius: 10px;
+}
+
+.signBtn {
+background-color: #240090;
+color: aliceblue;
+border-radius: 5px;
+border: 1px;
 }
 
