@@ -9,11 +9,13 @@ module.exports = function(app) {
   // Load example page and pass in an example by id
   app.get("/user/:id", function(req, res) {
     db.User.findOne({ where: { id: req.params.id } }).then(function(dbUser) {
-      res.render("user", {
-        user: dbUser
-      });
+      res.render("dashboard");
     });
   });
+
+  app.get("/add", function (req,res){
+    res.render("create-account"); 
+  }); 
 
   app.get("/user/tasks/:id", function(req,res){
     db.User.findOne({ where: { id: req.params.id } }).then(function(dbTask){

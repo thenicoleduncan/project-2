@@ -27,10 +27,24 @@ module.exports = function (app) {
 
   // Create a new goal.  
   app.post("/api/goal", function (req, res) {
-    db.Goal.create(req.body).then(function(dbGoal){
+    db.Goal.create({ description: req.body.description }).then(function(dbGoal){
       res.json(dbGoal); 
     }); 
   });
+ /*
+  app.post("/api/user", function (req, res) {
+    db.User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password
+    }).then(function (dbUser) {
+      res.json(dbUser);
+      console.log("new user has been added");
+    }).catch(function (err) {
+      console.log(err, req.body)
+    });
+  });
+  */
 
   // Update existing goal. 
   app.put("/api/goal/:id", function (req, res) {
