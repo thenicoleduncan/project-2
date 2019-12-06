@@ -3,7 +3,16 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    res.render("index"); 
+    if (req.user) {
+      res.render("index"); 
+    } else {
+      res.redirect("/login")
+    }
+
+  });
+
+  app.get("/login", (req, res) => {
+    res.send("login page");
   });
 
   // Load example page and pass in an example by id
