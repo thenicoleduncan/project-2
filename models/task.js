@@ -2,10 +2,14 @@ module.exports = function(sequelize, DataTypes) {
     const Task = sequelize.define("Task", {
         id: {
             type: DataTypes.INTEGER,
+            autoIncrement: true, 
             primaryKey: true
         }, 
         description: DataTypes.TEXT,
-        completed: DataTypes.BOOLEAN,
+        completed: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: 0
+        },
         start_date: DataTypes.DATE,
         due_date: DataTypes.DATE
     });
