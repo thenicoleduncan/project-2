@@ -2,11 +2,11 @@ module.exports = function(sequelize, DataTypes) {
     const Goal = sequelize.define("Goal", {
         id: {
             type: DataTypes.INTEGER,
+            autoIncrement: true, 
             primaryKey: true
         },
         description: DataTypes.TEXT,
-        completed: DataTypes.BOOLEAN,
-        user_id: DataTypes.INTEGER
+        completed: DataTypes.BOOLEAN
     });
 
     Goal.associate = function(models) {
