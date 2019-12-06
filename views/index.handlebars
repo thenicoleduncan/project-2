@@ -1,38 +1,53 @@
+<div class="container">
 
-{{!-- Andrew: header put here --}}
-<div class="header">
-    <a href="dashboard.handlebars">
-        <img id="logo" src="#" alt="logo">
-    </a>
-    <h1>ACCOUNTABILIBUDDY</h1>
-</div>
-{{!-- Nicole: description/bio put here --}}
+    <div class="header">
+        <a href="dashboard.handlebars">
+            <img id="logo" src="#" alt="logo">
+        </a>
+        <h1>ACCOUNTABILIBUDDY</h1>
+    </div>
 
-<div>
-    <h2>Welcome to Accountabilibuddy. A safe place to store your hopes and dreams.</h2>
-</div>
+    <br>
 
-{{!-- Nicole: authentication form and button put here --}}
+    <div class="row">
 
-<div class="sign-in">
-    <h2>Sign in to your account.</h2>
-    
-    <form action="/">
-        Email:<br>
-        <input type="text" name="email" value="">
-        <br><br>
-        Password:<br>
-        <input type="text" name="password" value="">
-        <br><br>
-        <input type="submit" value="Sign In">
-    </form>
+        <div>
+            <h2>Welcome to Accountabilibuddy. A safe place to store your hopes and dreams.</h2>
+        </div>
 
-    <p>If you don't have an account <a href="add">sign up</a>.</p>
-</div>
+    </div>
 
-{{!-- Andrew: footer put here --}}
-<div class="footer">
-    <p>©Copyright 2019</p>
+    <br>
 
+    <div class="row">
+
+        <div class="col-lg-4"></div>
+
+        <div class="sign-in col-lg-4">
+            <br>
+            <p>Sign in to your account.</p>
+
+            <form action="/">
+                Email:<br>
+                <input type="text" name="email" value="">
+                <br><br>
+                Password:<br>
+                <input type="text" name="password" value="">
+                <br><br>
+                <input type="submit" value="Sign In">
+            </form>
+            <br>
+            <p>Don't have an account? <a href="add">Sign up.</a>.</p>
+        </div>
+
+        <div class="col-lg-4"></div>
+
+    </div>
+
+    <br> <br>
+
+    <div class="footer">
+        <p>©Copyright 2019</p>
+    </div>
 
 </div>

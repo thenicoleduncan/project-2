@@ -15,5 +15,8 @@ body {
 
 .sign-in {
   align-content: center;
+  border-style: solid;
+  border-color: #3500D3;
+  font-size: 18px;
 }
 
