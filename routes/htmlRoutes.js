@@ -26,12 +26,8 @@ module.exports = function(app) {
     res.render("create-account"); 
   }); 
 
-  app.get("/user/tasks/:id", function(req,res){
-    db.User.findOne({ where: { id: req.params.id } }).then(function(dbTask){
-      res.render("task", {
-        task: dbTask
-      }); 
-    }); 
+  app.get("/tasks", function(req,res){
+    res.render("tasks")
   }); 
   
   // Render 404 page for any unmatched routes
