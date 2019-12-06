@@ -23,10 +23,10 @@ module.exports = function(passport) {
         passwordField: "password",
         session: true
       },
-      function(email, password, cb) {
+      function(email, password, done) {
         db.user.findOne({ where: { email: email } }).then(function(data) {
           if (data) {
-            return cb(null, false, {
+            return done(null, false, {
               message: "Oops! Email already signed-up."
             });
           } else {
@@ -41,7 +41,7 @@ module.exports = function(passport) {
                   userId: data.dataValues.id
                 };
                 db.history.create(record).then(function() {
-                  return cb(null, data);
+                  return done(null, data);
                 });
               });
           }
@@ -58,21 +58,21 @@ module.exports = function(passport) {
         passwordField: "password",
         session: false
       },
-      function(email, password, cb) {
-        db.user.findOne({ where: { email: email } }).then(function(data) {
-          if (!data) {
-            return cb(null, false, { message: "No email found." });
+      function(email, password, done) {
+        db.user.findOne({ where: { email: email } }).then(function(user) {
+          if (!user) {
+            return done(null, false, { message: "No email found." });
           }
-          if (!db.user.validPassword(password, data.password)) {
-            return cb(null, false, { message: "Oops! Wrong password!" });
+          if (!db.user.validPassword(password, user.password)) {
+            return done(null, false, { message: "Oops! Wrong password!" });
           }
 
           const record = {
             status: "LogIn",
-            userId: data.id
+            userId: user.id
           };
           db.history.create(record).then(function() {
-            return cb(null, data);
+            return done(null, data);
           });
         });
       }
