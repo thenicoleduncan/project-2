@@ -6,10 +6,12 @@
 
 .header {
   background-color: #190061;
+  width: 98%;
+  margin: 10px;
 }
 
 body {
-  background-color: black;
+  background-image: url();
   align-content: center;
   text-align: center;
   color: aliceblue;
