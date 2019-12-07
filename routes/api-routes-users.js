@@ -1,6 +1,13 @@
 // API USER ROUTES
-
-var db = require("../models");
+const passport = require("passport");
+require("../config/passport-config")(passport);
+//const flash = require("connect-flash");
+const db = require("../models");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+//jwt
+const jwt = require("jsonwebtoken");
+const jwtSecret = require("../config/jwt-config");
 
 module.exports = function (app) {
 
@@ -25,19 +32,43 @@ module.exports = function (app) {
     });
   });
 
+  ////////////////////
+  ////Auth Routes////
+  //////////////////
+
   // Create a new user 
-  app.post("/api/user", function (req, res) {
-    db.User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    }).then(function (dbUser) {
-      res.json(dbUser);
-      console.log("new user has been added");
-    }).catch(function (err) {
-      console.log(err, req.body)
-    });
-  });
+  app.post("/api/user", passport.authenticate("local-signup", {
+    successRedirect: "/",
+    failureRedirect: "/add",
+  }));
+
+  app.post(
+    "/api/login",
+    passport.authenticate("local-login", {
+      failureRedirect: "/login",
+    }),
+    function (req, res) {
+      const payload = {
+        email: req.user.email,
+        expires: Date.now() + parseInt(60000)
+      };
+      req.login(payload, { session: false }, function (error) {
+        if (error) {
+          res.status(400).send({ error });
+        }
+
+        const token = jwt.sign(JSON.stringify(payload), jwtSecret.secret);
+
+        res.cookie("jwt", token, { httpOnly: true, secure: false });
+        //redirect to dashboard;
+        res.redirect("index");
+      });
+    }
+  );
+
+
+
+
 
   // Update existing user.  
   app.put("/api/user/:id", function (req, res) {

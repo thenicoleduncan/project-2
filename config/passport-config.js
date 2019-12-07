@@ -17,32 +17,26 @@ module.exports = function(passport) {
 
   passport.use(
     "local-signup",
-    new LocalStrategy(
-      {
+    new LocalStrategy({
         usernameField: "email",
         passwordField: "password",
         session: true
       },
       function(email, password, done) {
-        db.user.findOne({ where: { email: email } }).then(function(data) {
+        db.User.findOne({ where: { email: email } }).then(function(data) {
           if (data) {
             return done(null, false, {
               message: "Oops! Email already signed-up."
             });
-          } else {
-            db.user
+          }
+          else {
+            db.User
               .create({
                 email: email,
-                password: db.user.generateHash(password)
+                password: db.User.generateHash(password)
               })
               .then(function(data) {
-                const record = {
-                  status: "SignUp",
-                  userId: data.dataValues.id
-                };
-                db.history.create(record).then(function() {
-                  return done(null, data);
-                });
+                return done(null, data);
               });
           }
         });
@@ -52,28 +46,21 @@ module.exports = function(passport) {
 
   passport.use(
     "local-login",
-    new LocalStrategy(
-      {
+    new LocalStrategy({
         usernameField: "email",
         passwordField: "password",
-        session: false
+        session: true
       },
       function(email, password, done) {
-        db.user.findOne({ where: { email: email } }).then(function(user) {
+        db.User.findOne({ where: { email: email } }).then(function(user) {
           if (!user) {
             return done(null, false, { message: "No email found." });
           }
-          if (!db.user.validPassword(password, user.password)) {
+          if (!db.User.validPassword(password, user.password)) {
             return done(null, false, { message: "Oops! Wrong password!" });
           }
 
-          const record = {
-            status: "LogIn",
-            userId: user.id
-          };
-          db.history.create(record).then(function() {
-            return done(null, data);
-          });
+          return done(null, user);
         });
       }
     ) //end new LocalStrategy
@@ -89,10 +76,11 @@ module.exports = function(passport) {
   passport.use(
     "jwt",
     new JwtStrategy(opts, function(jwtpayload, cb) {
-      db.user.findOne({ id: jwtpayload.sub }).then(function(data) {
+      db.User.findOne({ id: jwtpayload.sub }).then(function(data) {
         if (data) {
           return cb(null, data);
-        } else {
+        }
+        else {
           return cb(null, false, { message: "No user found." });
         }
       });
