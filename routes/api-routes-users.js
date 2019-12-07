@@ -45,7 +45,7 @@ module.exports = function (app) {
   app.post(
     "/api/login",
     passport.authenticate("local-login", {
-      failureRedirect: "/login",
+      failureRedirect: "/",
     }),
     function (req, res) {
       const payload = {
@@ -61,7 +61,7 @@ module.exports = function (app) {
 
         res.cookie("jwt", token, { httpOnly: true, secure: false });
         //redirect to dashboard;
-        res.redirect("index");
+        res.redirect("../dashboard");
       });
     }
   );

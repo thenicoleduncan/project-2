@@ -20,9 +20,12 @@ module.exports = function(passport) {
     new LocalStrategy({
         usernameField: "email",
         passwordField: "password",
-        session: true
+        session: true,
+        passReqToCallback: true
       },
-      function(email, password, done) {
+      function(req, email, password, done) {
+        const userName = req.body.name;
+
         db.User.findOne({ where: { email: email } }).then(function(data) {
           if (data) {
             return done(null, false, {
@@ -33,7 +36,8 @@ module.exports = function(passport) {
             db.User
               .create({
                 email: email,
-                password: db.User.generateHash(password)
+                password: db.User.generateHash(password),
+                name: userName
               })
               .then(function(data) {
                 return done(null, data);
