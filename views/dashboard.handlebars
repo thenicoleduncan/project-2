@@ -12,7 +12,7 @@
 
   <div class="row">
 
-    <div id="priorityTasks" class="priorityTasks col-lg-6">
+    <div id="priorityTasks" class="priorityTasks col-lg-5">
       <br>
       <p class="leading">Upcoming Tasks</p>
       <br>
@@ -26,12 +26,17 @@
       <br>
     </div>
 
-    <div class="add-goal col-lg-6">
+    <div class="col-lg-2"></div>
+
+    <br>
+
+    <div class="add-goal col-lg-5">
       <br>
       <p class="leading">Add a Goal</p>
       <br>
       <form action="/api/goal" method="POST">
-        <textarea type="text" name="description"></textarea>
+        <textarea type="text" name="description" id="textInput"></textarea>
+        <br><br>
         <button type="submit" class="signBtn">Add Goal!</button>
       </form>
       <br>
@@ -50,7 +55,7 @@
       <ul>
         {{#each goals}}
         <li>
-          <p id="myBar"><a href="tasks.handlebars">Goal: {{goal}}</a></p>
+          <p id="myBar"><a href="/tasks">Goal: {{goal}}</a></p>
         </li>
         {{/each}}
       </ul>
@@ -60,11 +65,10 @@
   </div>
 
   <br>
+</div>
 
   <div class="footer">
 
     <p>© Copyright 2019</p>
 
   </div>
-
-</div>

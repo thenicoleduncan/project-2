@@ -19,23 +19,27 @@
         <div class="sign-in col-lg-4">
             <br>
             <p>Sign in to your account.</p>
-            <form action="/">
+
+
+            <form action="/dashboard" method="POST">
+
                 Email:<br>
                 <input type="text" name="email" value="">
                 <br><br>
                 Password:<br>
-                <input type="text" name="password" value="">
+                <input type="password" name="password" value="">
                 <br><br>
                 <input type="submit" class="signBtn" value="Sign In">
             </form>
             <br>
-            <p>Don't have an account? <a href="/views/create-account.handlebars" class="text-light">Sign up.</a></p>
+            <p>Don't have an account? <a href="/add" class="text-light">Sign up.</a></p>
         </div>
         <div class="col-lg-4"></div>
     </div>
     <br> <br>
+
+
+</div>
     <div class="footer">
         <p>© Copyright 2019</p>
     </div>
-
-</div>

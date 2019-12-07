@@ -28,7 +28,7 @@ module.exports = function (app) {
   // Create a new goal.  
   app.post("/api/goal", function (req, res) {
     db.Goal.create({ description: req.body.description }).then(function(dbGoal){
-      res.json(dbGoal); 
+      res.render("dashboard", { goals: dbGoal }); 
     }); 
   });
  /*

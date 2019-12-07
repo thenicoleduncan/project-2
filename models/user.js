@@ -1,13 +1,14 @@
+const bcrypt = require("bcrypt");
 
 module.exports = function (sequelize, DataTypes) {
     const User = sequelize.define("User", {
         id: {
             type: DataTypes.INTEGER,
-            autoIncrement: true, 
+            autoIncrement: true,
             primaryKey: true
         },
         name: DataTypes.CHAR(60),
-        email: DataTypes.STRING, 
+        email: DataTypes.STRING,
         password: DataTypes.STRING
     });
 
@@ -17,14 +18,14 @@ module.exports = function (sequelize, DataTypes) {
         User.hasOne(models.Calendar); //will create calendarId in User table
     }
 
-    User.generateHash = function(password) {
+    User.generateHash = function (password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     };
 
-    User.validPassword = function(inputPwd, dbPwd) {
+    User.validPassword = function (inputPwd, dbPwd) {
         return bcrypt.compareSync(inputPwd, dbPwd);
     };
-
+    User.sync();
     return User;
 };
 
