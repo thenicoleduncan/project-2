@@ -11,6 +11,10 @@ const jwtSecret = require("../config/jwt-config");
 
 module.exports = function (app) {
 
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(cookieParser());
+  
   // Get all users
   app.get("/api/user", function (req, res) {
     db.User.findAll({

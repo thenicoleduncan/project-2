@@ -12,12 +12,12 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
-app.use(passport.initialize());
-app.use(passport.session());
+
+//app.use(session({ secret: 'keyboard cat' }));
 
 // Handlebars
 
-app.engine(
+app.engine( 
   "handlebars",
   exphbs({
     defaultLayout: "main"
