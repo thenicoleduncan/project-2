@@ -1,40 +1,28 @@
 {{!-- sign in page (already have an account) ... can take you to create account page--}}
+<div class="header">
+    <a href="dashboard.handlebars">
+        <img id="logo" src="/images/logo.png" alt="logo">
+    </a>
+    <h1>ACCOUNTABILIBUDDY</h1>
+</div>
 
 <div class="container">
-    
-
-        <div class="header">
-            <a href="dashboard.handlebars">
-                <img id="logo" src="#" alt="logo">
-            </a>
-            <h1>ACCOUNTABILIBUDDY</h1>
-            <br>
-        </div>
-    
-
     <br>
-
     <div class="row">
-
         <div>
             <h2>Welcome to Accountabilibuddy. A safe place to store your hopes and dreams.</h2>
         </div>
-
     </div>
-
     <br>
-
     <div class="row">
-
         <div class="col-lg-4"></div>
-
         <div class="sign-in col-lg-4">
-
             <br>
-
             <p>Sign in to your account.</p>
 
-            <form action="/api/login" method="POST">
+
+            <form action="/dashboard" method="POST">
+
                 Email:<br>
                 <input type="text" name="email" value="">
                 <br><br>
@@ -46,12 +34,10 @@
             <br>
             <p>Don't have an account? <a href="/add" class="text-light">Sign up.</a></p>
         </div>
-
         <div class="col-lg-4"></div>
-
     </div>
-
     <br> <br>
+
 
 </div>
     <div class="footer">
