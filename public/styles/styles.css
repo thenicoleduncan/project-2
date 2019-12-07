@@ -76,3 +76,10 @@ font-family: 'Righteous', cursive;
   height: 2.5rem;
   align-content: center;
 }
+
+/* media queries */
+/* @media only screen and (max-width: 600px) {
+  .sign-in {
+    
+  }
+} */
