@@ -18,6 +18,10 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/dashboard", function(req, res){
+    res.render("dashboard"); 
+  }); 
+
   app.get("/add", function (req,res){
     res.render("create-account"); 
   }); 
