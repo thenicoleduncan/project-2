@@ -4,15 +4,11 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     if (req.user) {
-      res.render("index"); 
+      res.render("dashboard"); 
     } else {
-      res.redirect("/login")
+      res.render("index"); 
     }
 
-  });
-
-  app.get("/login", (req, res) => {
-    res.send("login page");
   });
 
   // Load example page and pass in an example by id
