@@ -16,6 +16,15 @@ module.exports = function (sequelize, DataTypes) {
 
         User.hasOne(models.Calendar); //will create calendarId in User table
     }
+
+    User.generateHash = function(password) {
+        return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+    };
+
+    User.validPassword = function(inputPwd, dbPwd) {
+        return bcrypt.compareSync(inputPwd, dbPwd);
+    };
+
     return User;
 };
 

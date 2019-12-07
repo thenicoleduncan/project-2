@@ -1,10 +1,10 @@
 {
   "development": {
     "username": "root",
-    "password": "Happiness123", 
+    "password": "", 
     "database": "accountabilibuddy_db",
     "host": "localhost",
-    "port": 3306,
+    "port": 3388,
     "dialect": "mysql"
   },
   "test": {
