@@ -1,31 +1,47 @@
 {{!-- tasks page showing tasks associated with the right goal --}}
-{{!-- Nicole: header --}}
-<div class="header">
-  <a href="dashboard.handlebars">
-    <img id="logo" src="#" alt="logo">
-  </a>
-  <h1>ACCOUNTABILIBUDDY</h1>
-</div>
-{{!-- specific goal --}}
-{{!-- Nicole: add tasks form --}}
-<div class="add-task">
-  <h2>Add a Task</h2>
-  <form action="/api/tasks" method="POST">
-    <textarea type="text" name="task"></textarea>
-    <button type="submit">Add Task!</button>
-  </form>
-</div>
-{{!-- tasks with due date --}}
-<div id="specificTasks">
-  <ul>
-    {{#each tasks}}
-    <li>
-      <p id="tasking">Task: {{task}}</p>
-    </li>
-    {{/each}}
-  </ul>
-</div>
-{{!-- Nicole: footer --}}
-<div class="footer">
-  <p>© Copyright 2019</p>
+
+<div class="container">
+
+  <div class="header">
+    <a href="dashboard.handlebars">
+      <img id="logo" src="#" alt="logo">
+    </a>
+    <h1>ACCOUNTABILIBUDDY</h1>
+  </div>
+
+  {{!-- specific goal --}}
+
+
+  <div class="row">
+
+    <div class="add-task">
+      <p class="leading">Add a Task</p>
+      <form action="/api/tasks" method="POST">
+        <textarea type="text" name="task"></textarea>
+        <button type="submit" class="signBtn">Add Task!</button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div id="specificTasks" class="myProgress">
+      <br>
+      <p class="leading">Tasks</p>
+      <br>
+      <ul>
+        {{#each tasks}}
+        <li>
+          <p id="tasking">Task: {{task}}</p>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>© Copyright 2019</p>
+  </div>
 </div>
