@@ -1,4 +1,14 @@
-var db = require("../models");
+
+// API USER ROUTES
+const passport = require("passport");
+require("../config/passport-config")(passport);
+//const flash = require("connect-flash");
+const db = require("../models");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+//jwt
+const jwt = require("jsonwebtoken");
+const jwtSecret = require("../config/jwt-config");
 
 module.exports = function (app) {
 
@@ -6,11 +16,11 @@ module.exports = function (app) {
   app.get("/api/goals", function (req, res) {
     db.Goal.findAll({
       where: {
-        id: req.params.id
+        UserId: req.params.id
       }
-    }).then(function(dbGoal){
-      res.json(dbGoal); 
-    }); 
+    }).then(function (dbGoal) {
+      res.json(dbGoal);
+    });
   });
 
   // Get one particular goal.  
@@ -18,44 +28,33 @@ module.exports = function (app) {
     db.Goal.findOne({
       where: {
         id: req.params.id
-      }, 
+      },
       include: [db.User]
-    }).then(function(dbGoal){
-      res.json(dbGoal); 
-    }); 
+    }).then(function (dbGoal) {
+      res.json(dbGoal);
+    });
   });
 
   // Create a new goal.  
   app.post("/api/goal", function (req, res) {
-    db.Goal.create({ description: req.body.description }).then(function(dbGoal){
-      res.render("dashboard", { goals: dbGoal }); 
-    }); 
+    
+      db.Goal.create({ description: req.body.description, UserId: req.user.id }).then(function (dbGoal) {
+        res.render("dashboard", { goals: dbGoal });
+      });
+
   });
- /*
-  app.post("/api/user", function (req, res) {
-    db.User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    }).then(function (dbUser) {
-      res.json(dbUser);
-      console.log("new user has been added");
-    }).catch(function (err) {
-      console.log(err, req.body)
-    });
-  });
-  */
+ 
 
   // Update existing goal. 
   app.put("/api/goal/:id", function (req, res) {
     db.Goal.update(
       req.body, {
-        where: {
-          id: req.body.id
-        }
-      }).then(function(dbGoal){
-        res.json(dbGoal);
-      });
+      where: {
+        id: req.body.id
+      }
+    }).then(function (dbGoal) {
+      res.json(dbGoal);
+    });
   });
 
   // Delete existing goal. 
@@ -64,7 +63,7 @@ module.exports = function (app) {
       where: {
         id: req.params.id
       }
-    }).then(function(dbGoal){
+    }).then(function (dbGoal) {
       res.json(dbGoal)
     })
   });

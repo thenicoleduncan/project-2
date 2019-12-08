@@ -71,9 +71,7 @@ module.exports = function (app) {
   );
 
 
-
-
-
+  
   // Update existing user.  
   app.put("/api/user/:id", function (req, res) {
     db.User.update(

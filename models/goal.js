@@ -17,6 +17,5 @@ module.exports = function(sequelize, DataTypes) {
         Goal.hasMany(models.Milestone);
     };
 
-
     return Goal;
 };
