@@ -10,7 +10,7 @@ module.exports = function(passport) {
   });
 
   passport.deserializeUser(function(id, cb) {
-    db.user.findOne({ where: { id: id } }).then(function(data) {
+    db.User.findOne({ where: { id: id } }).then(function(data) {
       cb(null, data);
     });
   });
@@ -90,4 +90,8 @@ module.exports = function(passport) {
       });
     })
   );
+
+  
+
 };
+

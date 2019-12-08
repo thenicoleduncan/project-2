@@ -1,3 +1,4 @@
+/*
 const passport = require("passport");
 const express = require("express");
 const flash = require("connect-flash");
@@ -95,3 +96,4 @@ router.get("/logout", function(req, res) {
 // });
 
 module.exports = router;
+*/
