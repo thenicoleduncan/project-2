@@ -5,44 +5,50 @@
     <img id="logo" src="/images/logo.png" alt="logo">
   </a>
   <h1>ACCOUNTABILIBUDDY</h1>
+</div>
 
 <div class="container">
+  <br>
+  <div class="row">
+
+
+    <button class="signBtn1"><a href="/" class="back2home">← Back To Dashboard</a></button>
+    <button type="submit" class="signBtn1">Sign Out</button>
+
+  </div>
 
 
   {{!-- specific goal --}}
 
-
+  <br>
   <div class="row">
 
-    <div class="add-task">
+    <div class="add-goal col-lg-12">
       <p class="leading">Add a Task</p>
       <form action="/api/tasks" method="POST">
-        <textarea type="text" name="description" id="textInput"></textarea>
+        <textarea type="text" name="description" id="textInput" class="textInput"></textarea>
+        <br><br>
         <button type="submit" class="signBtn">Add Task!</button>
+        <br><br>
       </form>
     </div>
 
   </div>
-
+  <br>
   <div class="row">
 
-    <div id="specificTasks" class="myProgress">
+    <div id="specificTasks" class="myProgress col-lg-12">
       <br>
       <p class="leading">Tasks</p>
-      <br>
-      <ul>
-        {{#each tasks}}
-        <li>
-          <p id="tasking">{{description}}</p>
-        </li>
-        {{/each}}
-      </ul>
+      {{#each tasks}}
+      <p id="tasking" class="goalTime">{{description}}</p>
+      {{/each}}
     </div>
 
   </div>
-  
-</div>
 
-  <div class="footer">
-    <p>© Copyright 2019</p>
-  </div>
+</div>
+<br><br><br><br>
+<div class="footer">
+  <p>© Copyright 2019</p>
+</div>
