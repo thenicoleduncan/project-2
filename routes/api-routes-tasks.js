@@ -9,28 +9,28 @@ module.exports = function (app) {
             where: {
                 id: req.params.id
             }
-        }).then(function(dbTask){
+        }).then(function (dbTask) {
             res.json(dbTask);
-        }); 
+        });
     });
 
     // Create a new task 
     app.post("/api/tasks", function (req, res) {
-        db.Task.create(req.body).then(function(dbTask){
-            res.json(dbTask); 
-        }); 
+        db.Task.create({ description: req.body.description, UserId: req.user.id }).then(function (dbGoal) {
+            res.redirect("/tasks");
+        });
     });
 
     // Update existing task  
     app.put("/api/task/:id", function (req, res) {
         db.Task.update(
             req.body, {
-                where: {
-                    id: req.body.id
-                }
-            }).then(function(dbTask){
-                res.json(dbTask); 
-            }); 
+            where: {
+                id: req.body.id
+            }
+        }).then(function (dbTask) {
+            res.json(dbTask);
+        });
     });
 
     // Delete existing task. 
@@ -39,9 +39,9 @@ module.exports = function (app) {
             where: {
                 id: req.params.id
             }
-        }).then(function(dbTask){
-            res.json(dbTask); 
-        }); 
+        }).then(function (dbTask) {
+            res.json(dbTask);
+        });
     });
 
 };

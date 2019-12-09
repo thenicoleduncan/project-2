@@ -39,7 +39,7 @@ module.exports = function (app) {
   app.post("/api/goal", function (req, res) {
     
       db.Goal.create({ description: req.body.description, UserId: req.user.id }).then(function (dbGoal) {
-        res.render("dashboard", { goals: dbGoal });
+        res.redirect("/dashboard");
       });
 
   });
