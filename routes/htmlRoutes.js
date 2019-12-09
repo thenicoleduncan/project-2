@@ -1,12 +1,20 @@
-var db = require("../models");
 const passport = require("passport");
 require("../config/passport-config")(passport);
+//const flash = require("connect-flash");
+const db = require("../models");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+//jwt
+const jwt = require("jsonwebtoken");
+const jwtSecret = require("../config/jwt-config");
 
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
     if (req.user) {
-      res.render("dashboard");
+      db.Goal.findAll({ where: { UserId: req.user.id } }).then(function(dbGoals){
+        res.render("dashboard", { goals: dbGoals }); 
+      }); 
     } else {
       res.render("index");
     }
@@ -22,7 +30,9 @@ module.exports = function (app) {
 
   app.get("/dashboard", passport.authenticate("jwt", { session: false }), function (req, res) {
     if (req.user) {
-      res.render("dashboard")
+      db.Goal.findAll({ where: { UserId: req.user.id } }).then(function(dbGoals){
+        res.render("dashboard", { goals: dbGoals }); 
+      });  
     } else {
       res.redirect("/");
     }
@@ -34,7 +44,9 @@ module.exports = function (app) {
 
   app.get("/tasks", passport.authenticate("jwt", { session: false }), function (req, res) {
     if (req.user) {
-      res.render("tasks")
+      db.Task.findAll({ where: { UserId: req.user.id } }).then(function(dbTasks){
+        res.render("tasks", { tasks: dbTasks })
+      })
     } else {
       res.redirect("/");
     }

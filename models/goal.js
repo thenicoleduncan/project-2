@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Goal.associate = function(models) {
         Goal.belongsTo(models.User);
-        Goal.hasMany(models.Milestone);
+        Goal.hasMany(models.Task);
     };
 
     return Goal;
