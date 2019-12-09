@@ -9,6 +9,12 @@
 
 <div class="container">
   <br>
+  <div class="row">
+
+    <button type="submit" class="signBtn1">Sign Out</button>
+
+  </div>
+  <br>
 
   <div class="row">
 
@@ -52,13 +58,13 @@
       <br>
       <p class="leading">Goals</p>
       <br>
-      <ul>
-        {{#each goals}}
-        <li>
-          <p id="myBar" class="goalTime"><a href="/tasks">{{description}}</a></p>
-        </li>
-        {{/each}}
-      </ul>
+      {{!-- <ul class="unList"> --}}
+      {{#each goals}}
+      {{!-- <li> --}}
+      <p id="myBar" class="goalTime"><a href="/tasks">{{description}}</a></p>
+      {{!-- </li> --}}
+      {{/each}}
+      {{!-- </ul> --}}
       <br>
     </div>
 
