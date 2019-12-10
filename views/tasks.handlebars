@@ -27,6 +27,10 @@
       <p class="leading">Add a Task</p>
       <form action="/api/:{{ idgoal }}/tasks" method="POST">
         <textarea type="text" name="description" id="textInput" class="textInput"></textarea>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Priority</label>
+          </div>
         <br><br>
         <button type="submit" class="signBtn">Add Task!</button>
         <br><br>
