@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "abb",
-    "password": "W00den123", 
+    "username": "root",
+    "password": "Happiness123", 
     "database": "accountabilibuddy_db",
     "host": "dbank.mhsl.work",
     "port": 3306,
