@@ -36,8 +36,13 @@ border-radius: 5px;
 border: 1px;
 }
 
+.signBtn:hover {
+  background-color: lightslategray;
+  color: aliceblue;
+}
+
 .signBtn1 {
-  background-color: #0c0032;
+  background-color: #240090;
   color: aliceblue;
   border-radius: 5px;
   border: 1px;
@@ -45,7 +50,8 @@ border: 1px;
   }
 
 .signBtn1:hover {
-  background-color:#240090;
+  background-color: lightslategray;
+  color: aliceblue;
 }
 
 /* dashboard */
