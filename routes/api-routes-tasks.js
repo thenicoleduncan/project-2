@@ -32,7 +32,7 @@ module.exports = function (app) {
         db.Task.update(
             req.body, {
             where: {
-                id: req.body.id
+                id: req.params.id
             }
         }).then(function (dbTask) {
             res.json(dbTask);

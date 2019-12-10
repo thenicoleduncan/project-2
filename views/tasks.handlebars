@@ -50,8 +50,8 @@
         {{#each tasksCurrent }}
         <p id="tasking" class="goalTime col-lg-9">{{description}}</p>
         <div class="col-lg-1"></div>
-        <button type="submit" formaction="/action_page2.php" class="signBtn1 col-lg-1">✅</button>
-        <button type="submit" formaction="/api/task/:id" class="signBtn1 col-lg-1">❌</button>
+        <button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 taskdone">✅</button>
+        <button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 taskdelete">❌</button>
         {{/each}}
 
       </div>
