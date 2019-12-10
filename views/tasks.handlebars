@@ -28,8 +28,8 @@
       <form action="/api/:{{ idgoal }}/tasks" method="POST">
         <textarea type="text" name="description" id="textInput" class="textInput"></textarea>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Priority</label>
+          <input type="checkbox" class="form-check-input" name="priority" value=1 id="priorityCheck">
+          <label class="form-check-label" for="priorityCheck">Priority</label>
         </div>
         <br><br>
         <button type="submit" class="signBtn">Add Task!</button>
@@ -48,12 +48,17 @@
       <div class="row">
 
         {{#each tasksCurrent }}
-        <p id="tasking" class="goalTime col-lg-9">{{description}}</p>
-        <div class="col-lg-1"></div>
+        <p id="tasking" class="goalTime col-lg-8">{{description}}</p>
+        
+         <div class="form-check">
+    
+        </div>
         <button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 taskdone">✅</button>
+        <button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 taskpriority">!</button>
         <button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 taskdelete">❌</button>
+        
         {{/each}}
-
+<div class="col-lg-1"></div>
       </div>
     </div>
 

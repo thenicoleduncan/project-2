@@ -27,7 +27,7 @@
       <ul>
         {{#each tasks}}
         <li>
-          <p>Task #{{ id }}: {{ description }}</p>
+          <p>Task #{{ id }}: {{ description }}<button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 taskdone">✅</button></p> 
         </li>
         {{/each}}
       </ul>

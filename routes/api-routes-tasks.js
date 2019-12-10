@@ -22,7 +22,7 @@ module.exports = function (app) {
     app.post("/api/:goal/tasks", function (req, res) {
         var goal = `${req.params.goal}`;
         var goalId = goal.slice(1);
-        db.Task.create({ description: req.body.description, UserId: req.user.id, GoalId: goalId }).then(function (dbGoal) {
+        db.Task.create({ description: req.body.description, priority: req.body.priority, UserId: req.user.id, GoalId: goalId }).then(function (dbGoal) {
             res.redirect(`/${req.params.goal}/tasks`);
         });
     });
