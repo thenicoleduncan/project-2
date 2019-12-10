@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         priority: {
             type: DataTypes.BOOLEAN, 
-            defaultValue: 1
+            defaultValue: 0
         }
     });
 
