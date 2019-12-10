@@ -1,0 +1,36 @@
+{{!-- completed goals page --}}
+
+<div class="header">
+  <a href="dashboard.handlebars">
+    <img id="logo" src="/images/logo.png" alt="logo">
+  </a>
+  <h1>ACCOUNTABILIBUDDY</h1>
+</div>
+
+<div class="container">
+  <br>
+  <div class="row">
+
+
+    <button class="signBtn1"><a href="/dashboard" class="back2home">← Back To Dashboard</a></button>
+    <button type="submit" class="signBtn1"><a href="/api/logout" class="back2home">Sign Out</a></button>
+
+  </div>
+
+  <br>
+  <div class="row">
+
+    <div id="finishedGoals" class="myProgress col-lg-12">
+      <br>
+      <p class="leading">Completed Goals</p>
+      {{#each goalsDone }}
+      <p id="tasking" class="goalTime">{{description}}</p>
+      {{/each}}
+    </div>
+  </div>
+
+</div>
+<br><br><br><br>
+<div class="footer">
+  <p>© Copyright 2019</p>
+</div>
