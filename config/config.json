@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "Happiness123", 
+    "password": "mkchung8", 
     "database": "accountabilibuddy_db",
-    "host": "dbank.mhsl.work",
+    "host": "localhost",
     "port": 3306,
     "dialect": "mysql"
   },
