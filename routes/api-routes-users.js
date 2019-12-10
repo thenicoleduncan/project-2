@@ -46,7 +46,7 @@ module.exports = function (app) {
     failureRedirect: "/add",
   }));
 
-  app.post("/api/logout", function(req, res) {
+  app.get("/api/logout", function(req, res) {
     req.logout();
     res.redirect("/");
   });
