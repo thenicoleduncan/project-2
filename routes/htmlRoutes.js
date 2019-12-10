@@ -30,12 +30,15 @@ module.exports = function (app) {
     if (req.user) {
        
       db.Task.findAll({ where: { UserId: req.user.id, priority: 1 }}).then(function(dbTasks){
-
+        findGoal(dbTasks); 
       }); 
+      function findGoal(dbTasks) {
+        db.Goal.findAll({ where: { UserId: req.user.id } }).then(function(dbGoals){
+                res.render("dashboard", { tasks: dbTasks, goals: dbGoals}) }); 
+      }; 
+        
       
-      db.Goal.findAll({ where: { UserId: req.user.id } }).then(function(dbGoals){
-        res.render("dashboard", { goals: dbGoals })
-      });
+      
     
 
       
