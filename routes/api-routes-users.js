@@ -54,7 +54,7 @@ module.exports = function (app) {
   app.post(
     "/api/login",
     passport.authenticate("local-login", {
-      failureRedirect: "/",
+      failureRedirect: "/login-failed",
     }),
     function (req, res) {
       const payload = {

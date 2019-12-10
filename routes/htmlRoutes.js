@@ -14,9 +14,14 @@ module.exports = function (app) {
     if (req.user) {
       res.redirect("/dashboard");
     } else {
-      res.render("index");
+      let message = `Sign in to your account.`; 
+      res.render("index", { message: message });
     }
   });
+
+  app.get("/login-failed", function (req, res){
+    res.render("login-failed");
+  })
 
   // Load example page and pass in an example by id
   app.get("/user/:id", function (req, res) {
