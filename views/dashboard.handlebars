@@ -18,14 +18,14 @@
 
   <div class="row">
 
-    <div id="priorityTasks" class="priorityTasks col-lg-5">
+   <div id="priorityTasks" class="priorityTasks col-lg-5">
       <br>
-      <p class="leading">Upcoming Tasks</p>
+      <p class="leading">Priority Tasks</p>
       <br>
       <ul>
         {{#each tasks}}
         <li>
-          <p>Priority Task: {{task}}</p>
+          <p>Priority Task: {{ description }}</p>
         </li>
         {{/each}}
       </ul>

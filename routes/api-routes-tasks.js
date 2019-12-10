@@ -5,12 +5,16 @@ module.exports = function (app) {
 
     // Get all of user's tasks
     app.get("/api/:goal/tasks/", function (req, res) {
+        var goal = `${req.params.goal}`;
+        var goalId = goal.slice(1);
         db.Task.findAll({
             where: {
-                GoalId: req.params.goal
+                UserId: req.user.id, 
+                GoalId: goalId, 
+                priority: 1
             }
-        }).then(function (dbTask) {
-            res.redirect(`/${req.params.goal}/tasks`)
+        }).then(function (dbTasks) {
+           res.render("dashboard", { tasks: dbTasks }); 
         });
     });
 

@@ -1,8 +1,2 @@
-$(document).ready(function(){
+console.log("dashboard.js is connected"); 
 
-    $(".signBtn").on("submit", function(){
-        console.log("click"); 
-    }); 
-
-
-})
