@@ -29,7 +29,7 @@ module.exports = function (app) {
   app.get("/dashboard", function (req, res) {
     if (req.user) {
        
-      db.Task.findAll({ where: { UserId: req.user.id, priority: 1 }}).then(function(dbTasks){
+      db.Task.findAll({ where: { UserId: req.user.id, priority: 1, completed: 0 }}).then(function(dbTasks){
         findGoal(dbTasks); 
       }); 
       function findGoal(dbTasks) {
@@ -52,9 +52,14 @@ module.exports = function (app) {
     console.log(`Goal ID is ${goalId}`);
     if (req.user) {
       console.log(req.user);
-      db.Task.findAll({ where: { UserId: req.user.id, GoalId: goalId } }).then(function (dbTasks) {
-        res.render("tasks", { tasksCurrent: dbTasks, idgoal: goalId })
-      });
+      db.Task.findAll({ where: { UserId: req.user.id, GoalId: goalId, completed: 0 } }).then(function(dbCurrentTasks) {
+        renderFinishedTasks(dbCurrentTasks)
+      }); 
+      function renderFinishedTasks(dbCurrentTasks) {
+        db.Task.findAll({ where: { UserId: req.user.id, GoalId: goalId, completed: 1 }}).then(function(dbDoneTasks){
+          res.render("tasks", { tasksCurrent: dbCurrentTasks, tasksDone: dbDoneTasks, idgoal: goalId }); 
+        }); 
+      }; 
     } else {
       res.redirect("/");
     }
