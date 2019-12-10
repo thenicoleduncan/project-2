@@ -12,7 +12,6 @@
   <div class="row">
 
     <button type="submit" class="signBtn1">Sign Out</button>
-    <button type="submit" class="signBtn1">View Completed Goals</button>
 
   </div>
   <br>
@@ -52,6 +51,12 @@
   </div>
 
   <br>
+  <div class="row">
+
+    <button type="submit" class="signBtn1">View Completed Goals</button>
+
+  </div>
+  <br>
 
   <div class="row">
 
@@ -59,14 +64,17 @@
       <br>
       <p class="leading">Goals</p>
       <br>
-      {{!-- <ul class="unList"> --}}
-      {{#each goals}}
-      {{!-- <li> --}}
-      <p id="myBar" class="goalTime"><a href="/:{{ id }}/tasks">{{description}}</a></p>
-      {{!-- </li> --}}
-      {{/each}}
-      {{!-- </ul> --}}
-      <br>
+      <div class="row">
+
+        {{#each goals}}
+        <p id="myBar" class="goalTime col-lg-9"><a href="/:{{ id }}/tasks">{{description}}</a></p>
+        <div class="col-lg-1"></div>
+        <button type="submit" formaction="/action_page2.php" class="signBtn1 col-lg-1">✅</button>
+        <button type="submit" formaction="/api/goal/:id" class="signBtn1 col-lg-1">❌</button>
+        {{/each}}
+
+      </div>
+
     </div>
 
   </div>

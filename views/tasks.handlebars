@@ -41,22 +41,35 @@
   <br>
   <div class="row">
 
-    <div id="currentTasks" class="myProgress col-lg-6">
+    <div id="currentTasks" class="myProgress col-lg-12">
       <br>
       <p class="leading">Current Tasks</p>
-      {{#each tasksCurrent }}
-      <p id="tasking" class="goalTime">{{description}}</p>
-      {{/each}}
+
+      <div class="row">
+
+        {{#each tasksCurrent }}
+        <p id="tasking" class="goalTime col-lg-9">{{description}}</p>
+        <div class="col-lg-1"></div>
+        <button type="submit" formaction="/action_page2.php" class="signBtn1 col-lg-1">✅</button>
+        <button type="submit" formaction="/api/task/:id" class="signBtn1 col-lg-1">❌</button>
+        {{/each}}
+
+      </div>
     </div>
 
-    <div id="finishedTasks" class="myProgress col-lg-6">
+  </div>
+
+  <br>
+
+  <div class="row">
+
+    <div id="finishedTasks" class="myProgress col-lg-12">
       <br>
       <p class="leading">Finished Tasks</p>
       {{#each tasksDone }}
       <p id="tasking" class="goalTime">{{description}}</p>
       {{/each}}
     </div>
-
   </div>
 
 </div>
