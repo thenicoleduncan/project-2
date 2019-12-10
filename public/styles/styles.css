@@ -1,5 +1,9 @@
 /* general */
 
+.bg-dark {
+  padding-left: 50px; 
+}
+
 .header h1 {
   font-family: 'Righteous', cursive;
 }
@@ -81,11 +85,16 @@ border: 1px;
 }
 
 .goalTime {
-  align-content: center;
+  align-content: left;
+  text-align: left; 
   font-size: 25px;
   background-color: white;
   border-radius: 10px;
   color: blue;
+}
+
+.ptask {
+  text-align: left; 
 }
 
 .leading {

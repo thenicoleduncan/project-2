@@ -6,14 +6,28 @@
   <h1>ACCOUNTABILIBUDDY</h1>
 </div>
 
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark pl-5">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/completed-goals">View Completed Goals</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/api/logout">Sign Out</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div class="container">
   <br>
   <div class="row">
-
-
-    <button type="submit" class="signBtn1"><a href="/api/logout" class="back2home">Sign Out</a></button>
-    
 
   </div>
   <br>
@@ -27,7 +41,7 @@
       <ul>
         {{#each tasks}}
         <li>
-          <p>Task #{{ id }}: {{ description }}<button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 taskdone">✅</button></p> 
+          <p class="ptask"><b>Task #{{ id }}:</b> {{ description }}<button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 p-0 m-0 taskdone">✅</button></p> 
         </li>
         {{/each}}
       </ul>
@@ -55,8 +69,6 @@
   <br>
   <div class="row">
 
-    <a href="/completed-goals"><button type="submit" class="signBtn1" id="completedGoals">View Completed Goals</button></a>
-
   </div>
   <br>
 
@@ -69,7 +81,7 @@
       <div class="row">
 
         {{#each goals}}
-        <p id="myBar" class="goalTime col-lg-9">{{description}}</p>
+        <p id="myBar" class="goalTime col-lg-9">&bull; {{description}}</p>
         <button type="submit" class="signBtn1 col-lg-1"><a href="/:{{ id }}/tasks">View Tasks</a></button>
         <button type="submit" data-goalid="{{ id }}" class="signBtn1 col-lg-1 goaldone">✅</button>
         <button type="submit" data-goalid="{{ id }}" class="signBtn1 col-lg-1 goaldelete">❌</button>
