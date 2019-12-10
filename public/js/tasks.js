@@ -36,4 +36,21 @@ $(document).ready(function(){
     }); 
 
 
+    $(".taskpriority").on("click", function (event) {
+        event.preventDefault();
+        console.log(`task priority button clicked at id ${$(this).data("taskid")}`);
+        let id = $(this).data("taskid");
+        let dataObj = {
+            priority: 1
+        };
+        $
+            .ajax(`/api/task/${id}`, {
+                type: "PUT",
+                data: dataObj
+            }).then(function () {
+                console.log(`task ${id} completed`);
+                location.reload();
+            });
+    }); 
+
 }); 
