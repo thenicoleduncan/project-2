@@ -12,9 +12,7 @@ module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
     if (req.user) {
-      db.Goal.findAll({ where: { UserId: req.user.id } }).then(function(dbGoals){
-        res.render("dashboard", { goals: dbGoals }); 
-      }); 
+      res.redirect("/dashboard");
     } else {
       res.render("index");
     }
@@ -29,10 +27,19 @@ module.exports = function (app) {
 
 
   app.get("/dashboard", passport.authenticate("jwt", { session: false }), function (req, res) {
-    if (req.user) { 
+    if (req.user) {
+       
+      db.Task.findAll({ where: { UserId: req.user.id, priority: 1 }}).then(function(dbTasks){
+
+      }); 
+      
       db.Goal.findAll({ where: { UserId: req.user.id } }).then(function(dbGoals){
-        res.render("dashboard", { goals: dbGoals }); 
-      });  
+        res.render("dashboard", { goals: dbGoals })
+      });
+    
+
+      
+      
     } else {
       res.redirect("/");
     }
@@ -43,13 +50,13 @@ module.exports = function (app) {
   });
 
   app.get("/:goal/tasks", passport.authenticate("jwt", { session: false }), function (req, res) {
-   var goal = `${req.params.goal}`; 
-   var goalId = goal.slice(1); 
-   console.log(`Goal ID is ${goalId}`);
+    var goal = `${req.params.goal}`;
+    var goalId = goal.slice(1);
+    console.log(`Goal ID is ${goalId}`);
     if (req.user) {
-      console.log(req.user); 
-      db.Task.findAll({ where: { GoalId: goalId } }).then(function(dbTasks){
-        res.render("tasks", { tasks: dbTasks, idgoal: goalId  })
+      console.log(req.user);
+      db.Task.findAll({ where: { UserId: req.user.id, GoalId: goalId } }).then(function (dbTasks) {
+        res.render("tasks", { tasks: dbTasks, idgoal: goalId })
       });
     } else {
       res.redirect("/");
