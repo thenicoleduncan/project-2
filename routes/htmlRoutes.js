@@ -29,7 +29,7 @@ module.exports = function (app) {
 
 
   app.get("/dashboard", passport.authenticate("jwt", { session: false }), function (req, res) {
-    if (req.user) {
+    if (req.user) { 
       db.Goal.findAll({ where: { UserId: req.user.id } }).then(function(dbGoals){
         res.render("dashboard", { goals: dbGoals }); 
       });  
@@ -42,11 +42,15 @@ module.exports = function (app) {
     res.render("create-account");
   });
 
-  app.get("/tasks", passport.authenticate("jwt", { session: false }), function (req, res) {
+  app.get("/:goal/tasks", passport.authenticate("jwt", { session: false }), function (req, res) {
+   var goal = `${req.params.goal}`; 
+   var goalId = goal.slice(1); 
+   console.log(`Goal ID is ${goalId}`);
     if (req.user) {
-      db.Task.findAll({ where: { UserId: req.user.id } }).then(function(dbTasks){
-        res.render("tasks", { tasks: dbTasks })
-      })
+      console.log(req.user); 
+      db.Task.findAll({ where: { GoalId: goalId } }).then(function(dbTasks){
+        res.render("tasks", { tasks: dbTasks, idgoal: goalId  })
+      });
     } else {
       res.redirect("/");
     }
