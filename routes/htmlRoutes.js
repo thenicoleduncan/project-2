@@ -46,6 +46,12 @@ module.exports = function (app) {
     res.render("create-account");
   });
 
+  app.get("/completed-goals", function(req, res){
+    db.Goal.findAll({ where: { UserId: req.user.id, completed: 1} }).then(function(dbCompletedGoals){
+      res.render("completed-goals", { goals: dbCompletedGoals }); 
+    })
+  })
+
   app.get("/:goal/tasks", function (req, res) {
     var goal = `${req.params.goal}`;
     var goalId = goal.slice(1);
