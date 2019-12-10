@@ -28,9 +28,9 @@
       <form action="/api/:{{ idgoal }}/tasks" method="POST">
         <textarea type="text" name="description" id="textInput" class="textInput"></textarea>
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Priority</label>
-          </div>
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Priority</label>
+        </div>
         <br><br>
         <button type="submit" class="signBtn">Add Task!</button>
         <br><br>
@@ -41,10 +41,18 @@
   <br>
   <div class="row">
 
-    <div id="specificTasks" class="myProgress col-lg-12">
+    <div id="currentTasks" class="myProgress col-lg-6">
       <br>
-      <p class="leading">Tasks</p>
-      {{#each tasks}}
+      <p class="leading">Current Tasks</p>
+      {{#each tasksCurrent }}
+      <p id="tasking" class="goalTime">{{description}}</p>
+      {{/each}}
+    </div>
+
+    <div id="finishedTasks" class="myProgress col-lg-6">
+      <br>
+      <p class="leading">Finished Tasks</p>
+      {{#each tasksDone }}
       <p id="tasking" class="goalTime">{{description}}</p>
       {{/each}}
     </div>

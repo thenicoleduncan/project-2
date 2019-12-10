@@ -33,7 +33,7 @@ module.exports = function (app) {
         findGoal(dbTasks); 
       }); 
       function findGoal(dbTasks) {
-        db.Goal.findAll({ where: { UserId: req.user.id } }).then(function(dbGoals){
+        db.Goal.findAll({ where: { UserId: req.user.id, completed: 0 } }).then(function(dbGoals){
                 res.render("dashboard", { tasks: dbTasks, goals: dbGoals}) }); 
       }; 
         
@@ -59,7 +59,7 @@ module.exports = function (app) {
     if (req.user) {
       console.log(req.user);
       db.Task.findAll({ where: { UserId: req.user.id, GoalId: goalId } }).then(function (dbTasks) {
-        res.render("tasks", { tasks: dbTasks, idgoal: goalId })
+        res.render("tasks", { tasksCurrent: dbTasks, idgoal: goalId })
       });
     } else {
       res.redirect("/");
