@@ -37,12 +37,6 @@ module.exports = function (app) {
                 res.render("dashboard", { tasks: dbTasks, goals: dbGoals}) }); 
       }; 
         
-      
-      
-    
-
-      
-      
     } else {
       res.redirect("/");
     }
