@@ -26,7 +26,7 @@ module.exports = function (app) {
   });
 
 
-  app.get("/dashboard", passport.authenticate("jwt", { session: false }), function (req, res) {
+  app.get("/dashboard", function (req, res) {
     if (req.user) {
        
       db.Task.findAll({ where: { UserId: req.user.id, priority: 1 }}).then(function(dbTasks){
@@ -52,7 +52,7 @@ module.exports = function (app) {
     res.render("create-account");
   });
 
-  app.get("/:goal/tasks", passport.authenticate("jwt", { session: false }), function (req, res) {
+  app.get("/:goal/tasks", function (req, res) {
     var goal = `${req.params.goal}`;
     var goalId = goal.slice(1);
     console.log(`Goal ID is ${goalId}`);

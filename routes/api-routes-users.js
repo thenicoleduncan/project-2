@@ -46,6 +46,11 @@ module.exports = function (app) {
     failureRedirect: "/add",
   }));
 
+  app.post("/api/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
+
   app.post(
     "/api/login",
     passport.authenticate("local-login", {
