@@ -42,14 +42,23 @@
 
       <div class="row">
 
-        {{#each tasksCurrent }}
-        <p id="tasking" class="goalTime col-lg-8">{{description}}</p>
+        <div class="col-lg-12">
 
-        <div class="form-check col-lg-1"></div>
-        <button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 taskdone">✅</button>
-        <button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 taskpriority">!</button>
-        <button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 taskdelete">❌</button>
-        {{/each}}
+          {{#each tasksCurrent }}
+          <p id="myBar" class="goalTime col-lg-12">{{description}}
+            <button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 p-0 mr-1 ml-1 taskdone">✅</button>
+            <button type="submit" data-taskid="{{ id }}"
+              class="signBtn1 col-lg-1 p-0 mr-1 ml-1 taskpriority">&excl;</button>
+            <button type="submit" data-taskid="{{ id }}" class="signBtn1 col-lg-1 p-0 mr-1 ml-1 taskdelete">❌</button>
+          </p>
+
+          {{/each}}
+        </div>
+
+        
+        
+
+
       </div>
 
     </div>
