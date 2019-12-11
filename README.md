@@ -2,6 +2,9 @@
 
 Accountabilibuddy is a web application designed to assist users in meeting their desired goals by breaking them down into milestones that can be easily achieved and tracked within the database. 
 
+# Deployed Link
+* https://project-2-is-good.herokuapp.com/
+
 
 ## Technologies Used 
  
