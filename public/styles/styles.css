@@ -46,16 +46,16 @@ border: 1px;
 }
 
 .signBtn1 {
-  background-color: #240090;
-  color: aliceblue;
+  background-color: gray;
+  color: black;
   border-radius: 5px;
   border: 1px;
   float: right;
   }
 
 .signBtn1:hover {
-  background-color: lightslategray;
-  color: aliceblue;
+  background-color: whitesmoke;
+  color: black;
 }
 
 /* dashboard */
@@ -88,9 +88,9 @@ border: 1px;
   align-content: left;
   text-align: left; 
   font-size: 25px;
-  background-color: white;
+  background-color: whitesmoke;
   border-radius: 10px;
-  color: blue;
+  color: black;
 }
 
 .ptask {
