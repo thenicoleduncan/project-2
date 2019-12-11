@@ -63,14 +63,19 @@ module.exports = function (app) {
     console.log(`Goal ID is ${goalId}`);
     if (req.user) {
       console.log(req.user);
-      db.Task.findAll({ where: { UserId: req.user.id, GoalId: goalId, completed: 0 } }).then(function(dbCurrentTasks) {
+      db.Task.findAll({ where: { UserId: req.user.id, GoalId: goalId } }).then(function(dbCurrentTasks) {
         renderFinishedTasks(dbCurrentTasks)
       }); 
       function renderFinishedTasks(dbCurrentTasks) {
         db.Task.findAll({ where: { UserId: req.user.id, GoalId: goalId, completed: 1 }}).then(function(dbDoneTasks){
-          res.render("tasks", { tasksCurrent: dbCurrentTasks, tasksDone: dbDoneTasks, idgoal: goalId }); 
+          renderGoal(dbCurrentTasks, dbDoneTasks); 
         }); 
       }; 
+      function renderGoal (dbCurrentTasks, dbDoneTasks) {
+        db.Goal.findOne({ where: { id: goalId }}).then(function(dbGoal){
+          res.render("tasks", { tasksCurrent: dbCurrentTasks, tasksDone: dbDoneTasks, idgoal: goalId, goaldescr: dbGoal.description }); 
+        })
+      }
     } else {
       res.redirect("/");
     }
