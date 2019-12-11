@@ -63,7 +63,7 @@ module.exports = function (app) {
     console.log(`Goal ID is ${goalId}`);
     if (req.user) {
       console.log(req.user);
-      db.Task.findAll({ where: { UserId: req.user.id, GoalId: goalId } }).then(function(dbCurrentTasks) {
+      db.Task.findAll({ where: { UserId: req.user.id, GoalId: goalId, completed: 0 } }).then(function(dbCurrentTasks) {
         renderFinishedTasks(dbCurrentTasks)
       }); 
       function renderFinishedTasks(dbCurrentTasks) {
