@@ -52,7 +52,7 @@ border: 1px;
 }
 
 .signBtn1 {
-  background-color: gray;
+  background-color: whitesmoke;
   color: black;
   border-radius: 5px;
   border: 1px;
@@ -90,6 +90,10 @@ border: 1px;
   color: aliceblue;
 }
 
+.viewtask {
+  color: lightslategray; 
+}
+
 .goalTime {
   align-content: left;
   text-align: left; 
@@ -97,6 +101,10 @@ border: 1px;
   background-color: whitesmoke;
   border-radius: 10px;
   color: black;
+}
+
+.addgoal {
+  align-content: center;
 }
 
 .ptask {

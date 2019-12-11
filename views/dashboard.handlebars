@@ -82,14 +82,20 @@
       <p class="leading">Goals</p>
       <br>
       <div class="row">
+        <div class="col-lg-12">
+          {{#each goals}}
+          <p id="myBar" class="goalTime col-lg-12">&bull; {{description}}
+            <button type="submit" data-goalid="{{ id }}" class="signBtn1 goaldelete p-0 mr-1 ml-1">❌</button>
+            <button type="submit" data-goalid="{{ id }}" class="signBtn1 goaldone p-0 mr-1 ml-1">✅</button>
+            <button type="submit" class="signBtn1 p-0 mr-1 ml-1"><a class="viewtask"
+                href="/:{{ id }}/tasks">&#128065;</a></button>
+            
+            
 
-        {{#each goals}}
-        <p id="myBar" class="goalTime col-lg-9">&bull; {{description}}</p>
-        <button type="submit" class="signBtn1 col-lg-1"><a href="/:{{ id }}/tasks">Tasks</a></button>
-        <button type="submit" data-goalid="{{ id }}" class="signBtn1 col-lg-1 goaldone">✅</button>
-        <button type="submit" data-goalid="{{ id }}" class="signBtn1 col-lg-1 goaldelete">❌</button>
-        {{/each}}
+          </p>
 
+          {{/each}}
+        </div>
       </div>
 
     </div>
