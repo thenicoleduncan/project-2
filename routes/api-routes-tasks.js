@@ -1,10 +1,21 @@
 // API TASK ROUTES 
-var db = require("../models");
+const passport = require("passport");
+require("../config/passport-config")(passport);
+const db = require("../models");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+//jwt
+const jwt = require("jsonwebtoken");
+const jwtSecret = require("../config/jwt-config");
 
 module.exports = function (app) {
 
+    app.use(passport.initialize());
+    app.use(passport.session());
+    app.use(cookieParser());
+
     // Get all of user's tasks
-    app.get("/api/:goal/tasks/", function (req, res) {
+    app.get("/api/:goal/tasks/", passport.authenticate("jwt", { session: false }), function (req, res) {
         var goal = `${req.params.goal}`;
         var goalId = goal.slice(1);
         db.Task.findAll({
@@ -19,7 +30,7 @@ module.exports = function (app) {
     });
 
     // Create a new task 
-    app.post("/api/:goal/tasks", function (req, res) {
+    app.post("/api/:goal/tasks", passport.authenticate("jwt", { session: false }), function (req, res) {
         var goal = `${req.params.goal}`;
         var goalId = goal.slice(1);
         db.Task.create({ description: req.body.description, UserId: req.user.id, GoalId: goalId }).then(function (dbGoal) {
@@ -28,7 +39,7 @@ module.exports = function (app) {
     });
 
     // Update existing task  
-    app.put("/api/task/:id", function (req, res) {
+    app.put("/api/task/:id", passport.authenticate("jwt", { session: false }), function (req, res) {
         db.Task.update(
             req.body, {
             where: {
@@ -40,7 +51,7 @@ module.exports = function (app) {
     });
 
     // Delete existing task. 
-    app.delete("/api/task/:id", function (req, res) {
+    app.delete("/api/task/:id", passport.authenticate("jwt", { session: false }), function (req, res) {
         db.Task.destroy({
             where: {
                 id: req.params.id

@@ -12,8 +12,12 @@ const jwtSecret = require("../config/jwt-config");
 
 module.exports = function (app) {
 
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(cookieParser());
+
   // Get all of user's goals 
-  app.get("/api/goals", function (req, res) {
+  app.get("/api/goals", passport.authenticate("jwt", { session: false }), function (req, res) {
     db.Goal.findAll({
       where: {
         UserId: req.params.id
@@ -24,7 +28,7 @@ module.exports = function (app) {
   });
 
   // Get one particular goal.  
-  app.get("/api/goals/:id", function (req, res) {
+  app.get("/api/goals/:id", passport.authenticate("jwt", { session: false }), function (req, res) {
     db.Goal.findOne({
       where: {
         id: req.params.id
@@ -36,7 +40,7 @@ module.exports = function (app) {
   });
 
   // Create a new goal.  
-  app.post("/api/goal", function (req, res) {
+  app.post("/api/goal", passport.authenticate("jwt", { session: false }), function (req, res) {
     
       db.Goal.create({ description: req.body.description, UserId: req.user.id }).then(function (dbGoal) {
         res.redirect("/dashboard");
@@ -47,7 +51,7 @@ module.exports = function (app) {
  
 
   // Update existing goal. 
-  app.put("/api/goal/:id", function (req, res) {
+  app.put("/api/goal/:id", passport.authenticate("jwt", { session: false }), function (req, res) {
     db.Goal.update(
       req.body,
     {
@@ -60,7 +64,7 @@ module.exports = function (app) {
   });
 
   // Delete existing goal. 
-  app.delete("/api/goal/:id", function (req, res) {
+  app.delete("/api/goal/:id", passport.authenticate("jwt", { session: false }), function (req, res) {
     db.Goal.destroy({
       where: {
         id: req.params.id
